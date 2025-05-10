@@ -1,14 +1,17 @@
 public class Heap {
+    // Atributos
     private int[] contenedor;
     private int elementos;
     private int profundidad;
 
+    // Constructor por defecto que inicializa un Heap vacío
     public Heap() {
         this.contenedor = null;
         this.elementos = 0;
         this.profundidad = 0;
     }
 
+    // Constructor que inicializa un Heap con una profundidad específica
     public Heap(int profundidad) {
         this.profundidad = profundidad;
         int tamaño = (int) Math.pow(2, profundidad) - 1;
@@ -19,6 +22,7 @@ public class Heap {
         this.elementos = 0;
     }
 
+    // Devuelve el valor de la raíz del Heap
     public int raiz() {
         if (!esVacio()) {
             return contenedor[0];
@@ -26,6 +30,7 @@ public class Heap {
         return -1;
     }
 
+    // Inserta un valor en el Heap y lo reorganiza para mantener la propiedad del Heap
     public boolean insertar(int valor) {
         if (valor <= 0 || elementos >= contenedor.length) {
             return false;
@@ -47,6 +52,7 @@ public class Heap {
         return true;
     }
 
+    // Extrae y devuelve la raíz del Heap, reorganizando el Heap después
     public int extraer() {
         if (esVacio()) return -1;
         int raiz = contenedor[0];
@@ -57,6 +63,7 @@ public class Heap {
         return raiz;
     }
 
+    // Reorganiza el Heap desde un índice específico para mantener la propiedad del Heap
     private void heapify(int i) {
         int menor = i;
         int izq = 2 * i + 1;
@@ -77,10 +84,12 @@ public class Heap {
         }
     }
 
+    // Verifica si el Heap está vacío
     public boolean esVacio() {
         return elementos == 0;
     }
 
+    // Devuelve el subárbol izquierdo del Heap
     public Heap hijoIzquierdo() {
         Heap hijo = new Heap(this.profundidad - 1);
         int inicio = 1;
@@ -91,6 +100,7 @@ public class Heap {
         return hijo;
     }
 
+    // Devuelve el subárbol derecho del Heap
     public Heap hijoDerecho() {
         Heap hijo = new Heap(this.profundidad - 1);
         int inicio = 1 + (int) Math.pow(2, this.profundidad - 1) - 1;
@@ -101,11 +111,13 @@ public class Heap {
         return hijo;
     }
 
+    // Realiza un recorrido en preorden del Heap
     public void preOrden() {
         preOrden(0);
         System.out.println();
     }
 
+    // Método auxiliar para el recorrido en preorden
     private void preOrden(int i) {
         if (i >= contenedor.length || contenedor[i] <= 0) return;
         System.out.print(contenedor[i] + " ");
@@ -113,11 +125,13 @@ public class Heap {
         preOrden(2 * i + 2);
     }
 
+    // Realiza un recorrido en postorden del Heap
     public void postOrden() {
         postOrden(0);
         System.out.println();
     }
 
+    // Método auxiliar para el recorrido en postorden
     private void postOrden(int i) {
         if (i >= contenedor.length || contenedor[i] <= 0) return;
         postOrden(2 * i + 1);
@@ -125,11 +139,13 @@ public class Heap {
         System.out.print(contenedor[i] + " ");
     }
 
+    // Realiza un recorrido en inorden del Heap
     public void inOrden() {
         inOrden(0);
         System.out.println();
     }
 
+    // Método auxiliar para el recorrido en inorden
     private void inOrden(int i) {
         if (i >= contenedor.length || contenedor[i] <= 0) return;
         inOrden(2 * i + 1);
@@ -137,14 +153,17 @@ public class Heap {
         inOrden(2 * i + 2);
     }
 
+    // Devuelve el número de elementos en el Heap
     public int getElementos() {
         return elementos;
     }
 
+    // Devuelve la profundidad del Heap
     public int getProfundidad() {
         return profundidad;
     }
 
+    // Devuelve el contenedor del Heap
     public int[] getContenedor() {
         return contenedor;
     }

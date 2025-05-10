@@ -1,5 +1,6 @@
 public class HeapSort {
 
+    // Método para realizar el ordenamiento utilizando Heap Sort
     public static int[] heapSort(int[] array) {
         int profundidad = (int) (Math.floor(Math.log(array.length) / Math.log(2)) + 1);
         Heap heap = new Heap(profundidad);
@@ -16,6 +17,7 @@ public class HeapSort {
         return ordenado;
     }
 
+    // Método para imprimir el array
     public static void pintar(int[] array) {
         for (int valor : array) {
             System.out.print(valor + " ");
@@ -24,6 +26,8 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
+
+        // Array de números enteros positivos a ordenar
         int[] datos = {9, 3, 7, 1, 8, 2, 5};
 
         System.out.print("Array original: ");
