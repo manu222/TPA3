@@ -37,16 +37,12 @@ public class Heap {
         }
         contenedor[elementos] = valor;
         int i = elementos;
-        while (i > 0) {
+        while (i > 0 && contenedor[(i - 1) / 2] > contenedor[i]) {
             int padre = (i - 1) / 2;
-            if (contenedor[padre] > contenedor[i]) {
-                int temp = contenedor[padre];
-                contenedor[padre] = contenedor[i];
-                contenedor[i] = temp;
-                i = padre;
-            } else {
-                break;
-            }
+            int temp = contenedor[padre];
+            contenedor[padre] = contenedor[i];
+            contenedor[i] = temp;
+            i = padre;
         }
         elementos++;
         return true;
