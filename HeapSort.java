@@ -2,9 +2,10 @@ public class HeapSort {
 
     // Método para realizar el ordenamiento utilizando Heap Sort
     public static int[] heapSort(int[] array) {
+        // Calcular la profundidad del árbol
         int profundidad = (int) (Math.floor(Math.log(array.length) / Math.log(2)) + 1);
         Heap heap = new Heap(profundidad);
-
+        
         for (int valor : array) {
             heap.insertar(valor);
         }

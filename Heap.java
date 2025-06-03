@@ -11,6 +11,9 @@ public class Heap {
         this.profundidad = 0;
     }
 
+    //getprofundidad
+    
+
     // Constructor que inicializa un Heap con una profundidad específica
     public Heap(int profundidad) {
         this.profundidad = profundidad;
